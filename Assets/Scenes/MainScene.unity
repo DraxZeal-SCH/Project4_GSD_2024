@@ -140,6 +140,26 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: currentGunIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: availableGuns.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: availableGuns.Array.data[0]
+      value: 
+      objectReference: {fileID: 355869277713222502, guid: 0b819135e54c97d41b5d815f88a518e9, type: 3}
+    - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: availableGuns.Array.data[1]
+      value: 
+      objectReference: {fileID: 3923453055048342435, guid: 04d10115002c960498c1b8d9827e8213, type: 3}
+    - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: availableGuns.Array.data[2]
+      value: 
+      objectReference: {fileID: 4953939451309920839, guid: 5abb4c7b8205e754d8719525e2a08946, type: 3}
     - target: {fileID: 1499255725178546895, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -184,11 +204,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4476453315725769476, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476453315725769476, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476453315725769476, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9087444812674523510, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 1644984453067804376, guid: 249820bd9cfee08428405c82e0c6dac5, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9087444812674523510, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -201,6 +234,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1017130554952929552, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252303631468407190, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252303631468407190, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1252303631468407190, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -241,9 +286,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1470707121304301946, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481571899608379097, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715476163079517219, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 2953997414204383779, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
       propertyPath: m_Name
       value: Walls
+      objectReference: {fileID: 0}
+    - target: {fileID: 2953997414204383779, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415175969775704695, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3649556767097073509, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720087732831884444, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4015421170127331691, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593240072104775580, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -306,7 +387,16 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1946422091}
-    m_RemovedComponents: []
+    - target: {fileID: 6862754005314624023, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1946422091}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: orthographic size
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6681255021513304261, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -359,11 +449,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5859868805868908030, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
+      propertyPath: maxEnemies
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859868805868908030, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
+      propertyPath: despawnDistance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859868805868908030, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
+      propertyPath: spawnRadiusInner
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5859868805868908030, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
+      propertyPath: spawnRadiusOuter
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7008547633287919559, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5034221720371907400, guid: 1d00ee3fa7c22a342814508e61982aef, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

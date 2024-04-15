@@ -5,9 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - HealthItem
   - Projectile
   - EnemySpawner
+  - HealthDrop
+  - AmmoDrop
+  - Gun
+  - Obstacle
   layers:
   - Default
   - TransparentFX

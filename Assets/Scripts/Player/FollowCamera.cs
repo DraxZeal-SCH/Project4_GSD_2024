@@ -1,10 +1,16 @@
+// This script makes the camera follow a target smoothly.
 using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    public Transform target; // The target the camera will follow
-    public float smoothSpeed = 0.125f; // The speed at which the camera follows the target
-    public Vector3 offset; // The offset from the target's position
+    // The target the camera will follow
+    public Transform target;
+
+    // The speed at which the camera follows the target
+    public float smoothSpeed = 0.125f;
+
+    // The offset from the target's position
+    public Vector3 offset;
 
     void FixedUpdate()
     {
@@ -13,7 +19,7 @@ public class FollowCamera : MonoBehaviour
             // Calculate the desired position for the camera
             Vector3 desiredPosition = target.position + offset;
 
-            // Smoothly move the camera towards the desired position
+            // Smoothly move the camera towards the desired position using Lerp
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
             // Set the camera's position to the smoothed position
