@@ -4,10 +4,10 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
     // Array of available guns
-    public GameObject[] availableGuns;
+    [SerializeField] private GameObject[] availableGuns;
 
     // Index of the current gun in the available guns array
-    public int currentGunIndex = 0;
+    [SerializeField] private int currentGunIndex = 0;
 
     // Reference to the current player gun
     private GameObject currentPlayerGun;
@@ -43,15 +43,15 @@ public class GunManager : MonoBehaviour
     }
 
     // Method to shoot the current gun in a specified direction
-    public void ShootCurrentGun(Vector3 shooterPosition, Vector2 shootDirection)
+    public void ShootCurrentGun()
     {
         if (currentPlayerGun != null)
         {
             // Call the Fire method of the current gun
-            Gun currentGunScript = currentPlayerGun.GetComponent<Gun>();
+            Gun2 currentGunScript = currentPlayerGun.GetComponent<Gun2>();
             if (currentGunScript != null)
             {
-                currentGunScript.Fire(shootDirection);
+                currentGunScript.Shoot();
             }
         }
     }
@@ -62,7 +62,7 @@ public class GunManager : MonoBehaviour
         if (currentPlayerGun != null)
         {
             // Call the Reload method of the current gun
-            Gun currentGunScript = currentPlayerGun.GetComponent<Gun>();
+            Gun2 currentGunScript = currentPlayerGun.GetComponent<Gun2>();
             if (currentGunScript != null)
             {
                 currentGunScript.Reload();
@@ -76,7 +76,7 @@ public class GunManager : MonoBehaviour
         if (currentPlayerGun != null)
         {
             // Call the AddAmmo method of the current gun
-            Gun currentGunScript = currentPlayerGun.GetComponent<Gun>();
+            Gun2 currentGunScript = currentPlayerGun.GetComponent<Gun2>();
             if (currentGunScript != null)
             {
                 currentGunScript.AddAmmo(amount);

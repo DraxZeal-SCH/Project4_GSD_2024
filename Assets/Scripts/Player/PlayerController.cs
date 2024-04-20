@@ -4,28 +4,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Default speed of the player
-    public float defaultSpeed = 5f;
+    [SerializeField] private float Speed = 5f;
 
-    // Speed of the player when shifted
-    public float boostedSpeed = 10f;
+    // Speed of the player when sprinting
+    [SerializeField] private float sprintSpeed = 10f;
 
     // Maximum health of the player
-    public int maxHealth = 100;
+    [SerializeField] private int maxHealth = 100;
 
     // Reference to the GunManager script
-    public GunManager gunManager;
-
-    // Key for reloading
-    public KeyCode reloadKey = KeyCode.R;
-
-    // Key for switching to the previous gun
-    public KeyCode switchGunBackwardKey = KeyCode.Q;
-
-    // Key for switching to the next gun
-    public KeyCode switchGunForwardKey = KeyCode.E;
-
-    // Current speed of the player
-    private float currentSpeed;
+    private GunManager gunManager;
 
     // Current health of the player
     private int currentHealth;
@@ -33,38 +21,20 @@ public class PlayerController : MonoBehaviour
     // Rigidbody component of the player
     private Rigidbody2D rb;
 
-    // Player movement input
-    private Vector2 movement;
-
     // Flag to indicate if the player is dead
     private bool isDead = false;
 
-    // Getter and setter for current health
-    public int CurrentHealth
-    {
-        get { return currentHealth; }
-        set { currentHealth = value; }
-    }
+    // Player movement input
+    private Vector2 movement;
 
-    // Getter and Setter for max health
-    public int MaxHealth
-    {
-        get { return maxHealth; }
-        set { maxHealth = value;}
-    }
-
-    // Getter and setter for isDead
-    public bool IsDead
-    {
-        get { return isDead; }
-        set { isDead = value; }
-    }
+    // the position of the mouse relative to the player.
+    private Vector2 mousePos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        currentSpeed = defaultSpeed;
+        gunManager = GetComponentInChildren<GunManager>();
     }
 
     // Update is called once per frame
@@ -75,43 +45,32 @@ public class PlayerController : MonoBehaviour
             // Player movement input
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            // Player shooting input
-            if (Input.GetMouseButtonDown(0))
-            {
-                // Shoot towards the mouse cursor position
-                ShootTowardsMouse();
-            }
-            else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // Shoot in the opposite direction of the player's movement
-                ShootBehindPlayer();
-            }
+            float angle = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
-            // Shift to change speed
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            transform.localRotation = Quaternion.Euler(0, 0, angle);
+            
+
+            if(Input.GetMouseButtonDown(0))
             {
-                currentSpeed = boostedSpeed;
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                currentSpeed = defaultSpeed;
+                gunManager.ShootCurrentGun();
             }
 
             // Reload
-            if (Input.GetKeyDown(reloadKey))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 Reload();
             }
 
             // Switch guns backward
-            if (Input.GetKeyDown(switchGunBackwardKey))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 SwitchGun(-1);
             }
 
             // Switch guns forward
-            if (Input.GetKeyDown(switchGunForwardKey))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 SwitchGun(1);
             }
@@ -122,8 +81,16 @@ public class PlayerController : MonoBehaviour
     {
         if (!isDead)
         {
-            // Move the player
-            rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
+            // player movement with sprinting 
+            if (Input.GetKey(KeyCode.LeftShift))// holding down left shift makes you sprint
+            {
+                rb.velocity = movement.normalized * sprintSpeed;
+            }
+            else
+            {
+                rb.velocity = movement.normalized * Speed;
+            }
+            
         }
     }
 
@@ -162,34 +129,6 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         rb.velocity = Vector2.zero;
         Debug.Log("Game Over");
-    }
-
-    void ShootTowardsMouse()
-    {
-        // Get the mouse position in world coordinates
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0; // Ensure the z-coordinate is 0 (assuming 2D game)
-
-        // Calculate the direction towards the mouse cursor
-        Vector2 shootDirection = (mousePosition - transform.position).normalized;
-
-        // Shoot in the calculated direction
-        if (gunManager != null)
-        {
-            gunManager.ShootCurrentGun(transform.position, shootDirection);
-        }
-    }
-
-    void ShootBehindPlayer()
-    {
-        // Shoot in the opposite direction of the player's movement
-        Vector2 shootDirection = -movement.normalized;
-
-        // Shoot in the calculated direction
-        if (gunManager != null)
-        {
-            gunManager.ShootCurrentGun(transform.position, shootDirection);
-        }
     }
 
     void Reload()
