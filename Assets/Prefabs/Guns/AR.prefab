@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 927614506920819379}
   - component: {fileID: 8043956840129352708}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: AR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,13 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4157088138322064516, guid: dcb3cfe61f4e89a43983e237c95b0982, type: 3}
-  bulletDamage: 5
-  bulletSpeed: 10
-  bulletLifeTime: 3
+  bulletDamage: 25
+  bulletSpeed: 15
+  bulletLifeTime: 4
   bulletPenetration: 0
   firingPoint: {fileID: 0}
-  fireRate: 0.2
+  fireRate: 0.1
   infiniteAmmo: 0
-  maxReserveAmmo: 25
-  magSize: 5
-  gunType: 0
+  maxReserveAmmo: 90
+  magSize: 30
+  gunType: 1

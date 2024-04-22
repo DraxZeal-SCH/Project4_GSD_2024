@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [Range(1, 25)]
+    
     [SerializeField] private float speed = 10f;// Speed property of the bullet. controlls the speed at which the bullet moves.
-
-    [Range(1, 25)]
+    
     [SerializeField] private float lifeTime = 3f;// Life Time of the bullet. how long the bullet stays "alive" before despawning
 
-    [Range(5, 50)]
     [SerializeField] private int damage = 10;// The damage the bullet does when colliding with an enemy.
 
     [SerializeField] private bool penetration = false;// Wether the bullet is penetrating or not. allows the bullet to shoot through and inflict damage on more enemies.
@@ -49,5 +47,26 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    // Setters for use in the gun script for setting the class fields of the bullet.
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public void SetLifeTime(float lifeTime)
+    {
+        this.lifeTime = lifeTime;
+    }
+
+    public void SetPenetration(bool penetration)
+    {
+        this.penetration = penetration;
     }
 }

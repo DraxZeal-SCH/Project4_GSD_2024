@@ -17,7 +17,7 @@ public class GunManager : MonoBehaviour
         // Assign the first available gun to the player if there are any available guns
         if (availableGuns.Length > 0)
         {
-            SwitchGun(currentGunIndex);
+            currentPlayerGun = Instantiate(availableGuns[currentGunIndex], transform.position, Quaternion.identity, transform);
         }
     }
 
@@ -56,6 +56,7 @@ public class GunManager : MonoBehaviour
         }
     }
 
+
     // Method to reload the current gun
     public void ReloadCurrentGun()
     {
@@ -83,4 +84,26 @@ public class GunManager : MonoBehaviour
             }
         }
     }
+
+    public int GetCurrentGunType()
+    {
+        if (currentPlayerGun != null)
+        {
+            return currentPlayerGun.GetComponent<Gun2>().GetGunType();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public float GetCurrentGunFireRate()
+    {
+        return currentPlayerGun.GetComponent<Gun2>().GetFireRate();
+    }
+
+    /*public int GetBurstRounds()
+    {
+        return currentPlayerGun.GetComponent<Gun2>().GetBurstRounds();
+    }*/
 }

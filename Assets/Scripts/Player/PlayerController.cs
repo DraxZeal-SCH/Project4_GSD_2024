@@ -1,4 +1,5 @@
 // This script controls the player's movement and interaction.
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -27,14 +28,29 @@ public class PlayerController : MonoBehaviour
     // Player movement input
     private Vector2 movement;
 
-    // the position of the mouse relative to the player.
+    // The position of the mouse relative to the player.
     private Vector2 mousePos;
+
+    // The current gun type for the gun being used. 0 = Semi-Auto, 1 = Full-Auto, 2 = Burst-Fire.
+    private int currentGunType;
+
+    // The fire rate for the currently equipped gun.
+    private float currentFireRate;
+
+    // The time between shots.
+    private float fireTimer;
+
+    // The number of bullets fired when using a burst fire gun.
+    // private int bulletsToFire;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        gunManager = GetComponentInChildren<GunManager>();
+        gunManager = GetComponent<GunManager>();
+        currentGunType = gunManager.GetCurrentGunType();
+        currentFireRate = gunManager.GetCurrentGunFireRate();
+        //bulletsToFire = gunManager.GetBurstRounds();
     }
 
     // Update is called once per frame
@@ -50,12 +66,50 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg - 90f;
 
             transform.localRotation = Quaternion.Euler(0, 0, angle);
-            
 
-            if(Input.GetMouseButtonDown(0))
+            if (currentGunType == 0)
             {
-                gunManager.ShootCurrentGun();
+                if (Input.GetMouseButtonDown(0) && fireTimer <= 0f)
+                {
+                    gunManager.ShootCurrentGun();
+                    fireTimer = currentFireRate;
+                }
+                else
+                {
+                    fireTimer -= Time.deltaTime;
+                }
             }
+            else if (currentGunType == 1)
+            {
+                if (Input.GetMouseButton(0) && fireTimer <= 0f)
+                {
+                    gunManager.ShootCurrentGun();
+                    fireTimer = currentFireRate;
+                }
+                else
+                {
+                    fireTimer -= Time.deltaTime;
+                }
+            }
+            /* Still working on burst fire.
+             * else if (currentGunType == 2)
+            {
+                if(Input.GetMouseButtonDown(0))
+                {
+                    for (int i = 1; i < bulletsToFire; i++)
+                    {
+                        if (fireTimer <= 0f)
+                        {
+                            gunManager.ShootCurrentGun();
+                            fireTimer = currentFireRate;
+                        }
+                        else
+                        {
+                            fireTimer -= Time.deltaTime;
+                        }
+                    }
+                }
+            }*/
 
             // Reload
             if (Input.GetKeyDown(KeyCode.R))
@@ -145,6 +199,9 @@ public class PlayerController : MonoBehaviour
         if (gunManager != null)
         {
             gunManager.SwitchGun(direction);
+            currentGunType = gunManager.GetCurrentGunType();
+            currentFireRate = gunManager.GetCurrentGunFireRate();
+            //bulletsToFire = gunManager.GetBurstRounds();
         }
     }
 }
