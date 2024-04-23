@@ -48,6 +48,8 @@ public class Gun2 : MonoBehaviour
 
     // The current ammo loaded into the gun.
     private int loadedAmmo = 0;
+    public Text ammoText;
+
 
     
 
@@ -60,7 +62,25 @@ public class Gun2 : MonoBehaviour
         bulletPrefab.GetComponent<Bullet>().SetSpeed(bulletSpeed);
         bulletPrefab.GetComponent<Bullet>().SetLifeTime(bulletLifeTime);
         bulletPrefab.GetComponent<Bullet>().SetPenetration(bulletPenetration);
+        UpdateAmmoUI();
     }
+     void Update()
+    {
+          UpdateAmmoUI();
+    }
+     void UpdateAmmoUI()
+    {
+        if (ammoText != null)
+        {
+            // Set the text to display loaded and reserve ammo counts
+            ammoText.text = "Ammo: " + loadedAmmo.ToString() + " / " + reserveAmmo.ToString();
+        }
+        else
+        {
+            Debug.LogWarning("Ammo Text component not assigned in Gun2 script!");
+        }
+    }
+
 
     // A method for shooting the gun with logic to handle the gun being out of ammo or having infinite ammo.
     public void Shoot()
