@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     // Player movement input
     private Vector2 movement;
 
+    private int ExperienceCap = 10;
+
     // The position of the mouse relative to the player.
     private Vector2 mousePos;
 
