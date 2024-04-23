@@ -1,6 +1,7 @@
 // This script controls the player's movement and interaction.
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     // Maximum health of the player
     [SerializeField] private int maxHealth = 100;
+
+    [SerializeField] Text healthText;
 
     // Reference to the GunManager script
     private GunManager gunManager;

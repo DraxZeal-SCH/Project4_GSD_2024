@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun2 : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class Gun2 : MonoBehaviour
 
     // The current ammo loaded into the gun.
     private int loadedAmmo = 0;
-    public Text ammoText;
+    private Text ammoText;
 
 
     
@@ -63,6 +64,7 @@ public class Gun2 : MonoBehaviour
         bulletPrefab.GetComponent<Bullet>().SetLifeTime(bulletLifeTime);
         bulletPrefab.GetComponent<Bullet>().SetPenetration(bulletPenetration);
         UpdateAmmoUI();
+        ammoText = FindObjectsOfType<Text>()[0];
     }
      void Update()
     {
