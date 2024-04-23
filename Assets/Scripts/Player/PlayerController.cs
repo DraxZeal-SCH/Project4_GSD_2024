@@ -129,6 +129,7 @@ public class PlayerController : MonoBehaviour
                 SwitchGun(1);
             }
         }
+        UpdateHealthText();
     }
 
     void FixedUpdate()
@@ -202,6 +203,15 @@ public class PlayerController : MonoBehaviour
             currentGunType = gunManager.GetCurrentGunType();
             currentFireRate = gunManager.GetCurrentGunFireRate();
             //bulletsToFire = gunManager.GetBurstRounds();
+        }
+    }
+     void UpdateHealthText()
+    {
+          int displayedHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        // Update health text with current health value
+        if (healthText != null)
+        {
+            healthText.text = "Health: " + displayedHealth.ToString(); // Display health value as text
         }
     }
 }
