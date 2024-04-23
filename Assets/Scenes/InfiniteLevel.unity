@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &223552272
+--- !u!1001 &365125020
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -133,15 +133,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3517440885549979811, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3517440885549979811, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.050055504
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3517440885549979811, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.63581467
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3517440885549979811, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -179,16 +179,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room
       objectReference: {fileID: 0}
+    - target: {fileID: 6035968923870266641, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce091ec7f40d5491e893ef5d994cad2d, type: 3}
---- !u!4 &225675173 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5479632675262926707, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-  m_PrefabInstance: {fileID: 370869308596149736}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946422091 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1499255725178546895, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
@@ -212,12 +211,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: availableGuns.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: availableGuns.Array.data[0]
       value: 
-      objectReference: {fileID: 2168637251723657296, guid: 6731f9944f9fad54792163c57ad035e7, type: 3}
+      objectReference: {fileID: 355869277713222502, guid: 0b819135e54c97d41b5d815f88a518e9, type: 3}
     - target: {fileID: -6512195010120081121, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: availableGuns.Array.data[1]
       value: 
@@ -228,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 4953939451309920839, guid: 5abb4c7b8205e754d8719525e2a08946, type: 3}
     - target: {fileID: 1499255725178546895, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1499255725178546895, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,22 +269,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1837771978573493535, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: currentGunIndex
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837771978573493535, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837771978573493535, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.data[0]
-      value: 
-      objectReference: {fileID: 2168637251723657296, guid: 6731f9944f9fad54792163c57ad035e7, type: 3}
-    - target: {fileID: 2413354512017804114, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: gunManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3405173130564414968, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -300,46 +283,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4476453315725769476, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: currentGunIndex
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.data[1]
-      value: 
-      objectReference: {fileID: 2168637251723657296, guid: 4608d16348bb37041a6574c3b622aff8, type: 3}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.data[2]
-      value: 
-      objectReference: {fileID: 2168637251723657296, guid: 44abf27abda6ebf4dbae9e3c7cc43b79, type: 3}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.data[3]
-      value: 
-      objectReference: {fileID: 2168637251723657296, guid: d347adce8119c8e48a894145d735dbc9, type: 3}
-    - target: {fileID: 5485823778531231181, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: availableGuns.Array.data[4]
-      value: 
-      objectReference: {fileID: 2168637251723657296, guid: 0ff77fa9f4f082c4d98acda941a9b870, type: 3}
-    - target: {fileID: 8203447333227260223, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: firingPoint
-      value: 
-      objectReference: {fileID: 225675173}
-    - target: {fileID: 8203447333227260223, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
-      propertyPath: bulletPrefab
-      value: 
-      objectReference: {fileID: 4157088138322064516, guid: dcb3cfe61f4e89a43983e237c95b0982, type: 3}
     - target: {fileID: 9087444812674523510, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 1644984453067804376, guid: 249820bd9cfee08428405c82e0c6dac5, type: 3}
     m_RemovedComponents:
-    - {fileID: 0}
+    - {fileID: 9087444812674523510, guid: c1f1fd435f94f5f4fb672137f23117f9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -358,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252303631468407190, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1252303631468407190, guid: 905e1fac65abe2d459d269aa45d8d24d, type: 3}
       propertyPath: m_LocalScale.x
@@ -467,7 +418,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1623728205536382252, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1623728205536382252, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -522,8 +473,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1946422091}
     - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
       propertyPath: orthographic size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.2506675
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2985744
+      objectReference: {fileID: 0}
+    - target: {fileID: 7856870414255718979, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.4056604
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6681255021513304261, guid: 0d03da19ce9c1064ca3ca0cbfa66bcf9, type: 3}
