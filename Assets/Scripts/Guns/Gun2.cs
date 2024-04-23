@@ -51,7 +51,10 @@ public class Gun2 : MonoBehaviour
     private int loadedAmmo = 0;
     private Text ammoText;
 
+    [SerializeField] AudioClip shoot;
+    [SerializeField] AudioClip reload;
 
+    private AudioSource source;
     
 
     void Start()
@@ -65,6 +68,7 @@ public class Gun2 : MonoBehaviour
         bulletPrefab.GetComponent<Bullet>().SetPenetration(bulletPenetration);
         UpdateAmmoUI();
         ammoText = FindObjectsOfType<Text>()[0];
+        source = gameObject.GetComponent<AudioSource>();
     }
      void Update()
     {
@@ -75,7 +79,7 @@ public class Gun2 : MonoBehaviour
         if (ammoText != null)
         {
             // Set the text to display loaded and reserve ammo counts
-            ammoText.text = "Ammo: " + loadedAmmo.ToString() + " / " + reserveAmmo.ToString();
+            ammoText.text = "Ammo: " + loadedAmmo + "/" + magSize + " | " + reserveAmmo;
         }
         else
         {
@@ -94,10 +98,17 @@ public class Gun2 : MonoBehaviour
         else if (infiniteAmmo)
         {
             Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
+            source.clip = shoot;
+            source.volume = 0.5f;
+            source.Play();
+
         }
         else
         {
             Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
+            source.clip = shoot;
+            source.volume = 0.5f;
+            source.Play();
             loadedAmmo--;
         }
 
@@ -126,6 +137,9 @@ public class Gun2 : MonoBehaviour
                     reserveAmmo -= ammoNeeded;//subtract the ammo used from the reserve ammo.
                     Debug.Log("Reserve: " + reserveAmmo);
                 }
+                source.clip = reload;
+                source.volume = 1;
+                source.Play();
                 return true;
             }
             else
@@ -145,6 +159,9 @@ public class Gun2 : MonoBehaviour
                     reserveAmmo -= magSize;// subtract the ammo used from the reserve.
                     Debug.Log("Reserve: " + reserveAmmo);
                 }
+                source.clip = reload;
+                source.volume = 1;
+                source.Play();
                 return true;
             }
         }

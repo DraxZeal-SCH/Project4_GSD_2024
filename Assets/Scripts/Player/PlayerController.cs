@@ -1,6 +1,7 @@
 // This script controls the player's movement and interaction.
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     // Current health of the player
     private int currentHealth;
+
+    private int score;
 
     // Rigidbody component of the player
     private Rigidbody2D rb;
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
         gunManager = GetComponent<GunManager>();
         currentGunType = gunManager.GetCurrentGunType();
         currentFireRate = gunManager.GetCurrentGunFireRate();
+        score = 0;
         //bulletsToFire = gunManager.GetBurstRounds();
     }
 
@@ -187,6 +191,12 @@ public class PlayerController : MonoBehaviour
         isDead = true;
         rb.velocity = Vector2.zero;
         Debug.Log("Game Over");
+        GameOverTransition();
+    }
+
+    public void GameOverTransition()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 
     void Reload()
@@ -207,6 +217,11 @@ public class PlayerController : MonoBehaviour
             currentFireRate = gunManager.GetCurrentGunFireRate();
             //bulletsToFire = gunManager.GetBurstRounds();
         }
+    }
+
+    public void AddScore(int value)
+    {
+
     }
      void UpdateHealthText()
     {
