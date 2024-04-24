@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sprintSpeed = 10f;
 
     // Maximum health of the player
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxHealth;
 
     [SerializeField] Text healthText;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     // The position of the mouse relative to the player.
     private Vector2 mousePos;
 
-    // The current gun type for the gun being used. 0 = Semi-Auto, 1 = Full-Auto, 2 = Burst-Fire.
+    // The current gun type for the gun being used. 0 = Semi-Auto, 1 = Full-Auto
     private int currentGunType;
 
     // The fire rate for the currently equipped gun.
@@ -50,18 +50,16 @@ public class PlayerController : MonoBehaviour
     // The time between shots.
     private float fireTimer;
 
-    // The number of bullets fired when using a burst fire gun.
-    // private int bulletsToFire;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        maxHealth = 100;
         currentHealth = maxHealth;
         gunManager = GetComponent<GunManager>();
         currentGunType = gunManager.GetCurrentGunType();
         currentFireRate = gunManager.GetCurrentGunFireRate();
         score = 0;
-        //bulletsToFire = gunManager.GetBurstRounds();
+       
     }
 
     // Update is called once per frame
@@ -103,25 +101,6 @@ public class PlayerController : MonoBehaviour
                     fireTimer -= Time.deltaTime;
                 }
             }
-            /* Still working on burst fire.
-             * else if (currentGunType == 2)
-            {
-                if(Input.GetMouseButtonDown(0))
-                {
-                    for (int i = 1; i < bulletsToFire; i++)
-                    {
-                        if (fireTimer <= 0f)
-                        {
-                            gunManager.ShootCurrentGun();
-                            fireTimer = currentFireRate;
-                        }
-                        else
-                        {
-                            fireTimer -= Time.deltaTime;
-                        }
-                    }
-                }
-            }*/
 
             // Reload
             if (Input.GetKeyDown(KeyCode.R))
@@ -221,7 +200,7 @@ public class PlayerController : MonoBehaviour
             gunManager.SwitchGun(direction);
             currentGunType = gunManager.GetCurrentGunType();
             currentFireRate = gunManager.GetCurrentGunFireRate();
-            //bulletsToFire = gunManager.GetBurstRounds();
+            
         }
     }
 
@@ -231,12 +210,12 @@ public class PlayerController : MonoBehaviour
     }
      void UpdateHealthText()
     {
-         
+         string health = "Health: " + currentHealth.ToString() + "/" + maxHealth.ToString();
         // Update health text with current health value
         if (healthText != null)
         {
 
-            healthText.text = "Health: " + currentHealth.ToString() + "/" + maxHealth.ToString(); 
+            healthText.text = health; 
         }
     }
 
@@ -251,10 +230,12 @@ public class PlayerController : MonoBehaviour
         if(experience == ExperienceCap)
         {
             int oldMaxHealth = maxHealth;
-            maxHealth = maxHealth + (20 / 100 * maxHealth);
-            ExperienceCap = ExperienceCap + (20 / 100 * ExperienceCap);
+            Debug.Log("OldMaxHealth: " + maxHealth);
+            maxHealth += (20 / 100 * maxHealth);
+            Debug.Log("NewMaxHealth: " + maxHealth);
+            ExperienceCap += (20 / 100 * ExperienceCap);
             experience = 0;
-            if(currentHealth == oldMaxHealth)
+            if(currentHealth >= oldMaxHealth)
             {
                 currentHealth = maxHealth;
             }

@@ -45,22 +45,28 @@ public class Gun2 : MonoBehaviour
     // [SerializeField] private int burstRounds = 1;
 
     // The current ammo in the reserve.
-    private int reserveAmmo = 0;
+    private int reserveAmmo;
 
     // The current ammo loaded into the gun.
-    private int loadedAmmo = 0;
+    private int loadedAmmo;
     private Text ammoText;
 
     [SerializeField] AudioClip shoot;
     [SerializeField] AudioClip reload;
 
     private AudioSource source;
+
+    private bool setupComplete = false;
     
 
     void Start()
     {
-        loadedAmmo = magSize;
-        reserveAmmo = maxReserveAmmo;
+        if (!setupComplete)
+        {
+            loadedAmmo = magSize;
+            reserveAmmo = maxReserveAmmo;
+            setupComplete = true;
+        }
         firingPoint = GameObject.Find("FiringPoint").transform;
         bulletPrefab.GetComponent<Bullet>().SetDamage(bulletDamage);
         bulletPrefab.GetComponent<Bullet>().SetSpeed(bulletSpeed);
