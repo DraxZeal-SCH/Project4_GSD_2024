@@ -108,6 +108,7 @@ public class EnemyController : MonoBehaviour
 
         if (playerScript != null)
         {
+            playerScript.GainExp();
             playerScript.IncreaseHealth(10); // Increase the player's health by 10
         }
 

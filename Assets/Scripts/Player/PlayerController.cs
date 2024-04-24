@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private int ExperienceCap = 10;
 
+    private int experience = 0;
+
     // The position of the mouse relative to the player.
     private Vector2 mousePos;
 
@@ -94,6 +96,7 @@ public class PlayerController : MonoBehaviour
                 {
                     gunManager.ShootCurrentGun();
                     fireTimer = currentFireRate;
+
                 }
                 else
                 {
@@ -139,6 +142,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         UpdateHealthText();
+        levelUp();
     }
 
     void FixedUpdate()
@@ -227,11 +231,34 @@ public class PlayerController : MonoBehaviour
     }
      void UpdateHealthText()
     {
-          int displayedHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+         
         // Update health text with current health value
         if (healthText != null)
         {
-            healthText.text = "Health: " + displayedHealth.ToString(); // Display health value as text
+
+            healthText.text = "Health: " + currentHealth.ToString() + "/" + maxHealth.ToString(); 
+        }
+    }
+
+    public void GainExp()
+    {
+        experience++;
+        Debug.Log("exp gained" + experience);
+    }
+
+    public void levelUp()
+    {
+        if(experience == ExperienceCap)
+        {
+            int oldMaxHealth = maxHealth;
+            maxHealth = maxHealth + (20 / 100 * maxHealth);
+            ExperienceCap = ExperienceCap + (20 / 100 * ExperienceCap);
+            experience = 0;
+            if(currentHealth == oldMaxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+            Debug.Log("Level Up");
         }
     }
 }
